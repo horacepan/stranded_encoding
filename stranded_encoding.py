@@ -49,7 +49,7 @@ def deserialize_vec(enc, s, delta):
     results = np.zeros((d, s))
     for i in range(s):
         vals = np.floor_divide(enc, double_shifts[i])
-        res = np.mod(vals, delta)
+        res = np.mod(vals, delta) # for 0, mod by nothig?
         results[:, i] = res.reshape(-1)
 
     return results.reshape(-1, 1)

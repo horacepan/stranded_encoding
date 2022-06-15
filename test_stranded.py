@@ -61,10 +61,10 @@ def test_deserialize():
     print("Deserialize vector test okay!")
 
 def test_deserialize_matvec():
-    s = 3
-    delta = 2**20
-    A = np.random.randint(0, 10, size=(60, 5))
-    x = np.random.randint(0, 10, size=(5, 1))
+    s = 2
+    delta = 2**26
+    A = np.random.randint(255, size=(6, 3))
+    x = np.random.randint(255, size=(3, 1))
     Ax = A @ x
 
     sA = serialize_rows(A, s, delta)
@@ -73,7 +73,6 @@ def test_deserialize_matvec():
     dAx = deserialize_vec(sAx, s, delta)
     assert np.allclose(Ax, dAx), "Deserialized matrix vec product doesnt match expected"
     print("Deserialize matrix vector product okay!")
-
 
 def run_tests():
     test_serialize_rows()
